@@ -16,7 +16,7 @@ pipeline {
       stage('deploy') {
         steps {
           echo 'Deploying Apache website...'
-        sh 'docker run -d --name apache-website -p 8080:80 httpd:v1'
+        sh 'docker run -d --name apache-website -p 8081:80 httpd:v1'
       }
     }    
   }
