@@ -9,13 +9,14 @@ pipeline {
   }
       stage('build') {
         steps {
-        echo"build docker image"
-        sh 'docker build -t apache-static-website:v1'
+        echo"building docker image"
+        sh 'docker build -t httpd:v1 .'
       }
     }
       stage('deploy') {
         steps {
-        sh 'docker run -d --name apache-website -p 8080:80 httpd:latest'
+          echo 'Deploying Apache website...'
+        sh 'docker run -d --name apache-website -p 8080:80 httpd:v1'
       }
     }    
   }
